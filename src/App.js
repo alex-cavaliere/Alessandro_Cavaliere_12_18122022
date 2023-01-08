@@ -1,25 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import DataApi from './api/Api';
+import RadarStats from './components/radarChart';
+import BarStats from './components/barChart';
+import logo from './assets/logo.png'
+import { useEffect, useState } from "react";
 
 function App() {
+  const [data, setdata] = useState();
+
+  useEffect(() => {
+    const fetchDatas = new DataApi('./data.js')
+    console.log(fetchDatas.get(data))
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className='main'>
+      <header>
+        <img src={logo} alt='sportsee-logo'/>
       </header>
+      <div className="dashboard">
+        <RadarStats/>
+        <BarStats/>
+      </div>
     </div>
   );
 }
+
 
 export default App;
