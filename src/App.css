@@ -1,7 +1,57 @@
 header{
+    display: flex;
     background-color: black;
 }
 header img{
     padding: 1rem 0 1rem 2rem;
-    max-height: 5rem;
+    max-height: 4rem;
+}
+.barchart{
+    width: 60%;
+    padding: 2rem 1rem 1rem 1rem;
+    background-color: #FBFBFB;
+}
+.stats{
+    display: flex;
+}
+.linechart{
+    width: 20%;
+    background-color: red;
+    border-radius: 10px;
+    margin: 1rem;
+}
+.radarchart{
+    width: 20%;
+    margin: 1rem;
+    border-radius: 10px;
+    background-color: #282D30;
+}
+aside{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    background-color: black;
+    width: fit-content;
+    height: 1024px;
+}
+aside img{
+    margin: 0.5rem 2rem 0.5rem 2rem;
+    width: 3rem;
+}
+.dashboard{
+    margin-top: 2rem;
+    width: 90%;
+    float: right;
+}
+nav{
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    color: white;
 }
