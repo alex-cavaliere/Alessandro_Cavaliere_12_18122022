@@ -13,6 +13,9 @@ class Api {
 
 
 class DataApi extends Api {
+    constructor(url){
+        super(url)
+    }
     async getData() {
         return await this.get()
     }

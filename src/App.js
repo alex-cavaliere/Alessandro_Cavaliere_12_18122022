@@ -2,20 +2,22 @@ import './App.css';
 import DataApi from './api/Api';
 import RadarStats from './components/radarChart';
 import BarStats from './components/barChart';
-import LineStats from './components/lineChart';
+import AreaStats from './components/areaChart';
 import logo from './assets/logo.png'
 import icon1 from './assets/meditation_logo.png'
 import icon2 from './assets/swim_logo.png'
 import icon3 from './assets/bike_logo.png'
 import icon4 from './assets/gym_logo.png'
 import { useEffect, useState } from "react";
+import PieStats from './components/pieChart';
 
 function App() {
   const [data, setdata] = useState();
 
   useEffect(() => {
-    const fetchDatas = new DataApi('./data.js')
-    console.log(fetchDatas.get(data))
+    const fetchDatas = new DataApi('/P12-front-end-dashboard/app/data.js')
+    setdata(fetchDatas)
+    console.log(data)
   }, []);
   return (
     <div className='main'>
@@ -39,8 +41,9 @@ function App() {
       <div className="dashboard">
         <BarStats/>
         <div className='stats'>
-          <LineStats/>
+          <AreaStats/>
           <RadarStats/>
+          <PieStats/>
         </div>
       </div>
     </div>
