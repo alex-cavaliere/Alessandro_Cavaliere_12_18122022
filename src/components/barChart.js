@@ -4,45 +4,45 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 const data = [
   {
     name: '1',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    uv: 40,
+    pv: 24,
+    amt: 24,
   },
   {
     name: '2',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
+    uv: 30,
+    pv: 13,
+    amt: 22,
   },
   {
     name: '3',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
+    uv: 20,
+    pv: 98,
+    amt: 22,
   },
   {
     name: '4',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
+    uv: 27,
+    pv: 39,
+    amt: 20,
   },
   {
     name: '5',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
+    uv: 18,
+    pv: 48,
+    amt: 21,
   },
   {
     name: '6',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
+    uv: 23,
+    pv: 38,
+    amt: 25,
   },
   {
     name: '7',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
+    uv: 34,
+    pv: 43,
+    amt: 21,
   },
 ];
 
@@ -64,7 +64,7 @@ export default class BarStats extends PureComponent {
             }}
           >
             <CartesianGrid horizontal="true" vertical="" strokeDasharray="3" />
-            <XAxis dataKey="name" />
+            <XAxis axisLine={false} tickLine={false} dataKey="name" />
             <YAxis axisLine={false} tickLine={false} orientation="right" />
             <Tooltip />
             <Legend verticalAlign='top' align='right' height={70} iconType='circle'/>

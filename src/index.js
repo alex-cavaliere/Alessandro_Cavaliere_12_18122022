@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './index.css';
-import App from './App';
+import Header from './components/Header';
+import HomePage from './pages/HomePage'
+import UserPage from './pages/UserPage';
 import reportWebVitals from './reportWebVitals';
+import Aside from './components/Aside';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Header/>
+      <Aside/>
+      <Routes>
+        <Route exact path="/" element={<HomePage/>}/>
+        <Route path="/user/:id" element={<UserPage/>}/>
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
 

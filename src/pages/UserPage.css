@@ -10,22 +10,27 @@ header img{
     width: 60%;
     padding: 2rem 1rem 1rem 1rem;
     background-color: #FBFBFB;
+    border-radius: 10px;
 }
 .stats{
     display: flex;
 }
-.areachart{
-    height: 300px;
+.areachart, .radarchart, .piechart{
+    font-weight: 700;
+    height: 300px;  
     width: 300px;
-    background-color: red;
-    border-radius: 10px;
     margin: 1rem;
+    border-radius: 10px;  
+} 
+.areachart{
+    padding: 0 5px 0 5px;
+    background-color: red;
 }
 .radarchart{
-    margin: 1rem;
-    padding: 1rem;
-    border-radius: 10px;
     background-color: #282D30;
+}
+.piechart{
+    background-color: #FBFBFB;
 }
 aside{
     display: flex;
@@ -55,4 +60,9 @@ nav ul{
     justify-content: space-around;
     list-style: none;
     color: white;
+}
+.userChoice{
+    text-align: center;
+    margin-top: 10rem;
+    font-size: 36px;
 }
