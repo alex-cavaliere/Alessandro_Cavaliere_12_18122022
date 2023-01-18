@@ -12,13 +12,19 @@ header img{
     background-color: #FBFBFB;
     border-radius: 10px;
 }
-.stats{
+.stats, .score, .nutriscore, .nutriscore div{
     display: flex;
+}
+.score{
+    justify-content: space-around;
+}
+.stats{
+    margin-left: 5rem;
 }
 .areachart, .radarchart, .piechart{
     font-weight: 700;
-    height: 300px;  
-    width: 300px;
+    height: 250px;  
+    width: 250px;
     margin: 1rem;
     border-radius: 10px;  
 } 
@@ -32,18 +38,45 @@ header img{
 .piechart{
     background-color: #FBFBFB;
 }
+.nutriscore{
+    flex-direction: column;
+    width: 10%
+}
+.nutriscore p{
+    font-weight: bold;
+}
+.nutriscore div{
+    justify-content: space-between;
+    padding: 1rem;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #FBFBFB;
+}
+.nutriscore img{
+    width: 50px;
+    margin-right: 2rem;
+}
 aside{
     display: flex;
     position: absolute;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     background-color: black;
     width: fit-content;
-    height: 1024px;
+    height: 780px;
 }
 aside img{
+    display: flex;
     margin: 0.5rem 2rem 0.5rem 2rem;
     width: 3rem;
+}
+aside p{
+    position: relative;
+    top: 9rem;
+    color: white;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
 }
 .dashboard{
     margin-top: 2rem;

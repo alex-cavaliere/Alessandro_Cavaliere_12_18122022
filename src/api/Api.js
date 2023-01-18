@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-constructor */
 class Api {
     constructor(url) {
         this._url = url

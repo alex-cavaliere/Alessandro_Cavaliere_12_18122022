@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
 const data = [
   {
     name: '1',
@@ -51,7 +50,7 @@ export default class BarStats extends PureComponent {
   render() {
     return (
       <div className='barchart'>
-        <ResponsiveContainer width="100%" aspect={2}>
+        <ResponsiveContainer width="100%" aspect={3}>
           <BarChart
             width={500}
             height={300}

@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { USER_AVERAGE_SESSIONS} from '../api/data';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const data = [
@@ -49,7 +48,6 @@ const data = [
 /*
   estendere questa logica per gli altri
 */
-console.log(USER_AVERAGE_SESSIONS[0].sessions)
 export default class AreaStats extends PureComponent {
   static demoUrl = 'https://codesandbox.io/s/tiny-area-chart-uw0k8';
 
@@ -60,7 +58,7 @@ export default class AreaStats extends PureComponent {
           <AreaChart
             width={200}
             height={60}
-            data={USER_AVERAGE_SESSIONS[0].sessions}>
+            data={data}>
             <XAxis axisLine={false} tickLine={false} dataKey="day"/>
             <Area type="monotone" strokeWidth={2} dataKey="sessionLength" stroke="#FFFFFF" fill="red" />
           </AreaChart>
