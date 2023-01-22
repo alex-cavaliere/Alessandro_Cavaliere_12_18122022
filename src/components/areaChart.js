@@ -1,66 +1,33 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useEffect } from 'react';
+import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import DataApi from '../api/Api';
 
-const data = [
-  {
-    day: 'L',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    day: 'M',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    day: 'M',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    day: 'J',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    day: 'V',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    day: 'S',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    day: 'D',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+const dataUrl = `http://localhost:3000/user/`
 /*
   estendere questa logica per gli altri
 */
 export default class AreaStats extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/s/tiny-area-chart-uw0k8';
-
+  constructor(props){
+    super(props)
+    this.id = props.id
+    this.data = props.data
+  }
   render() {
+    const data = new DataApi(dataUrl).getUserSession(this.id)
+    data.then(function (res){
+      console.log(res)
+    })
     return (
       <div className="areachart">
         <ResponsiveContainer width="100%" aspect={1}>
           <AreaChart
             width={200}
             height={60}
-            data={data}>
+            data={this.data}
+            >
             <XAxis axisLine={false} tickLine={false} dataKey="day"/>
-            <Area type="monotone" strokeWidth={2} dataKey="sessionLength" stroke="#FFFFFF" fill="red" />
+            <Area type="monotone" strokeWidth={2} dataKey="uv" stroke="#FFFFFF" fill="red" />
           </AreaChart>
         </ResponsiveContainer>
       </div>
