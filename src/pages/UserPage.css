@@ -26,8 +26,8 @@ header img{
 }
 .areachart, .radarchart, .piechart{
     font-weight: 700;
-    height: 250px;  
-    width: 250px;
+    height: 300px;  
+    width: 300px;
     margin: 1rem;
     border-radius: 10px;  
 } 
@@ -41,6 +41,9 @@ header img{
 .piechart{
     background-color: #FBFBFB;
 }
+.piechart p{
+    margin-left: 1rem;
+}
 .nutriscore{
     flex-direction: column;
     width: 10%
@@ -51,6 +54,7 @@ header img{
 .nutriscore div{
     justify-content: space-between;
     padding: 1rem;
+    width: 100%;
     margin-bottom: 10px;
     border-radius: 10px;
     background-color: #FBFBFB;

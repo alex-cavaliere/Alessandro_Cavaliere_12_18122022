@@ -13,25 +13,24 @@ import DataApi from '../api/Api'
 
 function UserPage() {
   const {id} = useParams()
-  const dataUrl = `http://localhost:3000/user/`
   const [data, setData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
-  const call = new DataApi(dataUrl)
+  const call = new DataApi()
   useEffect(() => {
-    call.getUserInfo(id)
+    call.get(id, '')
     .then(function (res){
       setData(res)
       setIsLoading(false)
     },[isLoading])
   })
-  //console.log(data)
+  console.log(data)
   return (
     <>{!isLoading && (
       <div className='main'>
         <div className="dashboard">
           <h1>Bonjour <span className="firstName">{data.userInfos.firstName}</span></h1>
           <div className="score">
-            <BarStats/>
+            <BarStats id={id}/>
             <div className='nutriscore'>
               <div>
                 <img src={kcal} alt='calories'/>
@@ -54,7 +53,7 @@ function UserPage() {
           <div className='stats'>
             <AreaStats id={id}/>
             <RadarStats/>
-            <PieStats/>
+            <PieStats id={id}/>
           </div>
         </div>
       </div>

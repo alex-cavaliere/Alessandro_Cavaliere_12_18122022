@@ -1,32 +1,49 @@
-import React, { PureComponent } from 'react';
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
-const data = [
-  { name: 'Group A', value: 1 },
-];
+import React, { useState, useEffect } from 'react';
+import { PieChart, Pie, Cell, ResponsiveContainer, Label, YAxis } from 'recharts';
+import DataApi from '../api/Api';
 
-export default class PieStats extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/s/pie-chart-with-padding-angle-7ux0o';
-
-  render() {
-    return (
-      <div className='piechart'>
-        <p>Score</p>
-        <ResponsiveContainer width="100%" aspect={1}>
-          <PieChart width={800} height={400} onMouseEnter={this.onPieEnter}>
-            <Pie
-                data={data}
-                cx={120}
-                cy={100}
-                innerRadius={60}
-                outerRadius={80}
-                fill="#E60000"
-                paddingAngle={0}
-                dataKey="value"
-            >
-            </Pie>
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
-    );
-  }
+const COLORS = ["#E60000", "#FFFFFF"];
+const text = 'de votre objectif'
+export default function PieStats(props) {
+  const id = props.id
+  const [data, setData] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
+  const call = new DataApi()
+  useEffect(() => {
+    call.get(id, '')
+    .then(function (res){
+      setData(res)
+      setIsLoading(false)
+    },[isLoading, data])
+  })
+  const score = [
+    { name: "start", value: Number(data.todayScore)},
+    { name: "range", value: 1 }
+  ];
+  return (
+    <div className='piechart'>
+      <p>Score</p>
+      <ResponsiveContainer width="100%" aspect={1}>
+        <PieChart width={800} height={400}>
+          <Pie
+            data={score}
+            cx={140}
+            cy={110}
+            cornerRadius={50}
+            innerRadius={100}
+            outerRadius={110}
+            startAngle={180}
+            endAngle={-360}
+            paddingAngle={4}
+            dataKey="value"
+          >
+            {score.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+            <Label value={score[0].value * 100 + '% ' + text} position="center" width={50}/>
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
+  );
 }

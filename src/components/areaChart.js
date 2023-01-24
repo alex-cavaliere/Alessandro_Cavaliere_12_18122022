@@ -1,36 +1,36 @@
-import React, { PureComponent, useEffect } from 'react';
-import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import DataApi from '../api/Api';
 
-const dataUrl = `http://localhost:3000/user/`
-/*
-  estendere questa logica per gli altri
-*/
-export default class AreaStats extends PureComponent {
-  constructor(props){
-    super(props)
-    this.id = props.id
-    this.data = props.data
-  }
-  render() {
-    const data = new DataApi(dataUrl).getUserSession(this.id)
-    data.then(function (res){
-      console.log(res)
-    })
-    return (
-      <div className="areachart">
-        <ResponsiveContainer width="100%" aspect={1}>
-          <AreaChart
-            width={200}
-            height={60}
-            data={this.data}
-            >
-            <XAxis axisLine={false} tickLine={false} dataKey="day"/>
-            <Area type="monotone" strokeWidth={2} dataKey="uv" stroke="#FFFFFF" fill="red" />
-          </AreaChart>
-        </ResponsiveContainer>
-      </div>
-    );
-  }
+function AreaStats(){
+  const {id} = useParams()
+  const [data, setData] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
+  const call = new DataApi()
+  useEffect(() => {
+    call.get(id, '/average-sessions')
+    .then(function (res){
+      setData(res)
+      setIsLoading(false)
+    },[isLoading, data])
+  })
+  return (
+    <>{!isLoading && (
+        <div className="areachart">
+          <ResponsiveContainer width="100%" aspect={1}>
+            <AreaChart
+              width={200}
+              height={60}
+              data={data.sessions}
+              >
+              <XAxis axisLine={false} tickLine={false} dataKey="day"/>
+              <Area type="monotone" strokeWidth={2} dataKey="sessionLength" stroke="#FFFFFF" fill="red" />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+    )}</>
+  )
 }
+
+export default AreaStats
