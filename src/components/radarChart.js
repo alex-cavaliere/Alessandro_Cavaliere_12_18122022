@@ -1,6 +1,14 @@
-import React, { PureComponent } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
-const data = [
+import DataApi from '../api/Api';
+
+/** 
+ * React component for user performance
+ * @param {number} props User Id
+ * @returns {JSX}    
+ */
+
+const tata = [
     {
         subject: "Intensité",
         A: 120,
@@ -37,22 +45,34 @@ const data = [
         B: 85,
         fullMark: 150
     }
-];
+]
 
-export default class RadarStats extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/s/simple-radar-chart-rjoc6';
-
-  render() {
-    return (
+function RadarStats(props){
+  const id = props.id
+  const [data, setData] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
+  const call = new DataApi()
+  useEffect(() => {
+    call.get(id, '/performance')
+    .then(function (res){
+      setData(res)
+      setIsLoading(false)
+    },[isLoading, data])
+  })
+  return (
+    <>{!isLoading && (
       <div className='radarchart'>
-        <ResponsiveContainer width="100%" aspect={1}>
-          <RadarChart cx="50%" cy="50%" outerRadius="55%" data={data}>
-            <PolarGrid />
-            <PolarAngleAxis dataKey="subject" />
-            <Radar name="Mike" dataKey="A" stroke="#FF0000" fill="#FF0000" fillOpacity={0.6} />
-          </RadarChart>
-        </ResponsiveContainer>
-      </div>
-    );
-  }
+      <ResponsiveContainer width="100%" aspect={1}>
+        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data.data}>
+          <PolarGrid />
+          <PolarAngleAxis dataKey='kind'/>
+          <Radar dataKey='value' stroke="#FF0000" fill="#FF0000" fillOpacity={0.6} />
+        </RadarChart>
+      </ResponsiveContainer>
+    </div>
+    )}</>
+  );
 }
+
+export default RadarStats
+

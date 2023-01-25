@@ -26,14 +26,26 @@ header img{
 }
 .areachart, .radarchart, .piechart{
     font-weight: 700;
-    height: 300px;  
-    width: 300px;
+    height: 258px;  
+    width: 263px;
     margin: 1rem;
     border-radius: 10px;  
 } 
 .areachart{
     padding: 0 5px 0 5px;
     background-color: red;
+}
+.areachart .description{
+    width: 60%;
+    margin: 2rem;
+    color: white;
+    opacity: 0.6;
+}
+.label{
+    color: black;
+    background-color: white;
+    text-align: center;
+    padding: 1rem 0.5rem 1rem 0.5rem;
 }
 .radarchart{
     background-color: #282D30;

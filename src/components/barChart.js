@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import DataApi from '../api/Api';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-function BarStats(){
-  const {id} = useParams()
+/** 
+ * React component for user activity
+ * @param {number} props User Id
+ * @returns {JSX} informations about calories and weight 
+ */
+
+function BarStats(props){
+  const id = props.id
   const [data, setData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
   const call = new DataApi()
@@ -15,6 +20,10 @@ function BarStats(){
       setIsLoading(false)
     },[isLoading, data])
   })
+  console.log(data.sessions)
+  const currentDay = (date) => {
+    return date.split('-')[2]
+  }
   return(
     <>{!isLoading && (
       <div className='barchart'>
@@ -31,7 +40,7 @@ function BarStats(){
             }}
           >
             <CartesianGrid horizontal="true" vertical="" strokeDasharray="3" />
-            <XAxis axisLine={false} tickLine={false} dataKey="day" />
+            <XAxis axisLine={false} tickLine={false} dataKey="day" tickFormatter={currentDay} />
             <YAxis axisLine={false} tickLine={false} orientation="right" />
             <Tooltip />
             <Legend verticalAlign='top' align='right' height={70} iconType='circle'/>

@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer, Label, YAxis } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Label } from 'recharts';
 import DataApi from '../api/Api';
 
+/** 
+ * React component for user today score
+ * @param {number} props User Id
+ * @returns {JSX}    
+ */
+
 const COLORS = ["#E60000", "#FFFFFF"];
-const text = 'de votre objectif'
+
 export default function PieStats(props) {
   const id = props.id
   const [data, setData] = useState({})
@@ -28,10 +34,10 @@ export default function PieStats(props) {
           <Pie
             data={score}
             cx={140}
-            cy={110}
+            cy={90}
             cornerRadius={50}
-            innerRadius={100}
-            outerRadius={110}
+            innerRadius={80}
+            outerRadius={90}
             startAngle={180}
             endAngle={-360}
             paddingAngle={4}
@@ -40,7 +46,7 @@ export default function PieStats(props) {
             {score.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
-            <Label value={score[0].value * 100 + '% ' + text} position="center" width={50}/>
+            <Label value={score[0].value * 100 + '%  de votre objectif'} position="center" width={50}/>
           </Pie>
         </PieChart>
       </ResponsiveContainer>

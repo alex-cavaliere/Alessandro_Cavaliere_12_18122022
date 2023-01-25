@@ -10,6 +10,12 @@ import lipides from '../assets/lipides.png'
 import proteines from '../assets/proteines.png'
 import glucides from '../assets/glucides.png'
 import DataApi from '../api/Api'
+import PropTypes from 'prop-types'
+
+/** 
+ * React component for User Page 
+ * @returns {JSX} informations about user
+ */
 
 function UserPage() {
   const {id} = useParams()
@@ -23,7 +29,7 @@ function UserPage() {
       setIsLoading(false)
     },[isLoading])
   })
-  console.log(data)
+
   return (
     <>{!isLoading && (
       <div className='main'>
@@ -52,7 +58,7 @@ function UserPage() {
           </div>
           <div className='stats'>
             <AreaStats id={id}/>
-            <RadarStats/>
+            <RadarStats id={id}/>
             <PieStats id={id}/>
           </div>
         </div>
