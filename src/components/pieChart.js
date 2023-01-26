@@ -1,16 +1,17 @@
+import PropTypes from "prop-types"
 import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Label } from 'recharts';
 import DataApi from '../api/Api';
 
 /** 
- * React component for user today score
+ * @function PieStats React component for user today score
  * @param {number} props User Id
- * @returns {JSX}    
+ * @returns {JSX} informations for pie chart   
  */
 
 const COLORS = ["#E60000", "#FFFFFF"];
 
-export default function PieStats(props) {
+function PieStats(props) {
   const id = props.id
   const [data, setData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
@@ -52,4 +53,10 @@ export default function PieStats(props) {
       </ResponsiveContainer>
     </div>
   );
+}
+
+export default PieStats
+
+PieStats.propTypes = {
+  id: PropTypes.string.isRequired
 }

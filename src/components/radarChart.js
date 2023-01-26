@@ -1,51 +1,13 @@
+import PropTypes from "prop-types"
 import React, { useState, useEffect } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import DataApi from '../api/Api';
 
 /** 
- * React component for user performance
+ * @function RadarStats React component for user performance
  * @param {number} props User Id
- * @returns {JSX}    
+ * @returns {JSX} informations for radar chart
  */
-
-const tata = [
-    {
-        subject: "Intensité",
-        A: 120,
-        B: 110,
-        fullMark: 150
-    },
-    {
-        subject: "Vitesse",
-        A: 98,
-        B: 130,
-        fullMark: 150
-    },
-    {
-        subject: "Force",
-        A: 86,
-        B: 130,
-        fullMark: 150
-    },
-    {
-        subject: "Endurance",
-        A: 99,
-        B: 100,
-        fullMark: 150
-    },
-    {
-        subject: "Energie",
-        A: 85,
-        B: 90,
-        fullMark: 150
-    },
-    {
-        subject: "Cardio",
-        A: 65,
-        B: 85,
-        fullMark: 150
-    }
-]
 
 function RadarStats(props){
   const id = props.id
@@ -59,19 +21,27 @@ function RadarStats(props){
       setIsLoading(false)
     },[isLoading, data])
   })
+  if(!isLoading){
+    const kind = Object.values(data.kind) 
+    data.data.forEach((item, id) => item.kind = kind[id])
+  }
   return (
     <>{!isLoading && (
       <div className='radarchart'>
       <ResponsiveContainer width="100%" aspect={1}>
-        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data.data}>
+        <RadarChart cx="50%" cy="50%" outerRadius="65%" data={data.data}>
           <PolarGrid />
-          <PolarAngleAxis dataKey='kind'/>
+          <PolarAngleAxis style={{fontSize: '11px'}} dataKey='kind'/>
           <Radar dataKey='value' stroke="#FF0000" fill="#FF0000" fillOpacity={0.6} />
         </RadarChart>
       </ResponsiveContainer>
     </div>
     )}</>
   );
+}
+
+RadarStats.propTypes = {
+  id: PropTypes.string.isRequired,
 }
 
 export default RadarStats

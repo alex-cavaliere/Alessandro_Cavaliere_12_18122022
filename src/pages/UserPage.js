@@ -1,7 +1,7 @@
 import './UserPage.css';
 import RadarStats from '../components/RadarChart';
 import BarStats from '../components/BarChart';
-import AreaStats from '../components/AreaChart';
+import LineStats from '../components/LineChart';
 import { useEffect, useState, } from "react";
 import { useParams } from 'react-router-dom'
 import PieStats from '../components/PieChart';
@@ -10,11 +10,11 @@ import lipides from '../assets/lipides.png'
 import proteines from '../assets/proteines.png'
 import glucides from '../assets/glucides.png'
 import DataApi from '../api/Api'
-import PropTypes from 'prop-types'
 
 /** 
  * React component for User Page 
- * @returns {JSX} informations about user
+ * @function UserPage 
+ * @returns {JSX} Main informations about user
  */
 
 function UserPage() {
@@ -29,7 +29,6 @@ function UserPage() {
       setIsLoading(false)
     },[isLoading])
   })
-
   return (
     <>{!isLoading && (
       <div className='main'>
@@ -40,24 +39,24 @@ function UserPage() {
             <div className='nutriscore'>
               <div>
                 <img src={kcal} alt='calories'/>
-                <p>{data.keyData.calorieCount + "kcal"}</p>
+                <p>{data.keyData.calorieCount + "kcal"}<br/><span>Calories</span></p>
               </div>
               <div>
                 <img src={proteines} alt='proteines'/>
-                <p>{data.keyData.proteinCount + "mg"}</p>
+                <p>{data.keyData.proteinCount + "mg"}<br/><span>Proteines</span></p>
               </div>
               <div>
                 <img src={glucides} alt='glucides'/>
-                <p>{data.keyData.carbohydrateCount + "mg"}</p>
+                <p>{data.keyData.carbohydrateCount + "mg"}<br/><span>Glucides</span></p>
               </div>
               <div>
                 <img src={lipides} alt='lipides'/>
-                <p>{data.keyData.lipidCount + "mg"}</p>
+                <p>{data.keyData.lipidCount + "mg"}<br/><span>Lipides</span></p>
               </div>
             </div>
           </div>
           <div className='stats'>
-            <AreaStats id={id}/>
+            <LineStats id={id}/>
             <RadarStats id={id}/>
             <PieStats id={id}/>
           </div>

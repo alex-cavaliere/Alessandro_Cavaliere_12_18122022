@@ -3,6 +3,11 @@ import icon2 from '../assets/swim_logo.png'
 import icon3 from '../assets/bike_logo.png'
 import icon4 from '../assets/gym_logo.png'
 
+/**
+ * @function Aside 
+ * @returns {JSX} lateral NavBar
+ */
+
 function Aside(){
     return(
         <aside>

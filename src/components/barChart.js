@@ -1,11 +1,12 @@
+import PropTypes from "prop-types"
 import React, { useState, useEffect } from 'react';
 import DataApi from '../api/Api';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 /** 
- * React component for user activity
+ * @function BarStats React component for user activity
  * @param {number} props User Id
- * @returns {JSX} informations about calories and weight 
+ * @returns {JSX} informations about calories and weight for bar chart 
  */
 
 function BarStats(props){
@@ -20,7 +21,6 @@ function BarStats(props){
       setIsLoading(false)
     },[isLoading, data])
   })
-  console.log(data.sessions)
   const currentDay = (date) => {
     return date.split('-')[2]
   }
@@ -51,5 +51,9 @@ function BarStats(props){
       </div>
     )}</>
   )
+}
+
+BarStats.propTypes = {
+  id: PropTypes.string.isRequired
 }
 export default BarStats

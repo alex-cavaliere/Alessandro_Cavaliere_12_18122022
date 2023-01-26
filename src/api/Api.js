@@ -1,6 +1,10 @@
-import { useParams } from "react-router-dom"
+/** 
+ * @param {number} props User Id
+ * @param {string} dataUrl partial path URL
+ * @param {string} action final path URL
+ * @returns {Promise} data call filtered by Id
+ */
 
-/* eslint-disable no-useless-constructor */
 class Api {
     static dataUrl = `http://localhost:3000/user/`
 

@@ -1,14 +1,17 @@
+import PropTypes from "prop-types"
 import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import DataApi from '../api/Api';
 
 /** 
- * React component for user average sessions
+ * @function LineStats React component for user average sessions
  * @param {number} props user Id
- * @returns {JSX}
+ * @returns {JSX} informations for line chart
  */
 
-function AreaStats(props){
+const days = ['L','M','M','J','V','S','D']
+
+function LineStats(props){
   const id = props.id
   const [data, setData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
@@ -20,6 +23,9 @@ function AreaStats(props){
       setIsLoading(false)
     },[isLoading, data])
   })
+  if(!isLoading){
+    data.sessions.forEach((session, id) => session.day = days[id])
+  }
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
@@ -27,10 +33,9 @@ function AreaStats(props){
       );
     }
   };
-  console.log(data.sessions)
   return (
     <>{!isLoading && (
-        <div className="areachart">
+        <div className="linechart">
           <p className='description'>Durée moyenne des sessions</p>
           <ResponsiveContainer width="100%" aspect={1.8}>
             <LineChart
@@ -48,4 +53,8 @@ function AreaStats(props){
   )
 }
 
-export default AreaStats
+LineStats.propTypes = {
+  id: PropTypes.string.isRequired
+}
+
+export default LineStats

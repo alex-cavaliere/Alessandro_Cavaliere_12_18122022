@@ -1,5 +1,10 @@
 import logo from '../assets/logo.png'
 
+/**
+ * @function Header 
+ * @returns {JSX} horizontal NavBar
+ */
+
 function Header(){
     return(
         <header>
