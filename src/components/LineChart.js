@@ -26,13 +26,13 @@ function LineStats(props){
   if(!isLoading){
     data.sessions.forEach((session, id) => session.day = days[id])
   }
-  const CustomTooltip = ({ active, payload, label }) => {
+  const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
           <p className="label">{`${payload[0].value} min`}</p>
-      );
+      )
     }
-  };
+  }
   return (
     <>{!isLoading && (
         <div className="linechart">
@@ -44,8 +44,8 @@ function LineStats(props){
             data={data.sessions}
             >
               <XAxis axisLine={false} tickLine={false} dataKey="day" stroke='#FFFFFF' style={{opacity: 0.6}}/>
-              <Tooltip content={<CustomTooltip />}/>
-              <Line type="monotone" dataKey="sessionLength" strokeWidth={3} stroke="#FFFFFF" style={{opacity: 0.6,}}/>
+              <Tooltip cursor={false} content={<CustomTooltip />}/>
+              <Line type="basis" dataKey="sessionLength" strokeWidth={3} stroke="#FFFFFF" style={{opacity: 0.6,}}/>
           </LineChart>
         </ResponsiveContainer>
         </div>

@@ -33,7 +33,10 @@ function UserPage() {
     <>{!isLoading && (
       <div className='main'>
         <div className="dashboard">
-          <h1>Bonjour <span className="firstName">{data.userInfos.firstName}</span></h1>
+          <div className='user-name'>
+            <h1>Bonjour <span className="first-name">{data.userInfos.firstName}</span></h1>
+            <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+          </div>
           <div className="score">
             <BarStats id={id}/>
             <div className='nutriscore'>

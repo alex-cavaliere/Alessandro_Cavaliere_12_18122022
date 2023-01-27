@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Back-end launch
+
+Clone [Back-end repository](https://github.com/alex-cavaliere/P12-front-end-dashboard).\
+
+Launch back-end with `npm start`
+
 ## Available Scripts
 
 In the project directory, you can run:
