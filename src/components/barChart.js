@@ -27,6 +27,16 @@ function BarStats(props){
   const currentDay = (date) => {
     return date.split('-')[2]
   }
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return (
+          <div className="bar-label">
+            <p>{`${payload[0].value} kg`}</p>
+            <p>{`${payload[1].value} kcal`}</p>
+          </div>
+      )
+    }
+  }
   return(
     <>{!isLoading && (
       <div className='barchart'>
@@ -45,7 +55,7 @@ function BarStats(props){
             <CartesianGrid horizontal="true" vertical="" strokeDasharray="3" />
             <XAxis axisLine={false} tickLine={false} dataKey="day" tickFormatter={currentDay} />
             <YAxis axisLine={false} tickLine={false} orientation="right" />
-            <Tooltip />
+            <Tooltip content={CustomTooltip}/>
             <Legend verticalAlign='top' align='right' height={70} iconType='circle'/>
             <Bar barSize={7} radius={[10, 10, 0, 0]} dataKey="kilogram" fill="#282D30" />
             <Bar barSize={7} radius={[10, 10, 0, 0]} dataKey="calories" fill="#E60000" />

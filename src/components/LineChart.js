@@ -32,7 +32,7 @@ function LineStats(props){
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
-          <p className="label">{`${payload[0].value} min`}</p>
+          <div className="line-label">{`${payload[0].value} min`}</div>
       )
     }
   }

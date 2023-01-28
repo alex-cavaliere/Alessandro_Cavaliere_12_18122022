@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Back-end launch
 
-Clone [Back-end repository](https://github.com/alex-cavaliere/P12-front-end-dashboard).\
+Clone [Back-end repository](https://github.com/alex-cavaliere/P12-front-end-dashboard).
 
 Launch back-end with `npm start`
 
@@ -15,7 +15,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser. If the port it's busy yet, open to `3001`
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.

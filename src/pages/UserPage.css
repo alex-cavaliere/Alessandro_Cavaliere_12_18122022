@@ -84,12 +84,19 @@ nav ul{
     color: white;
     opacity: 0.6;
 }
-.label{
+.line-label{
     color: black;
     background-color: white;
     text-align: center;
     padding: 1rem 0.5rem 1rem 0.5rem;
     margin: 0;
+}
+.bar-label{
+    background-color: red;
+    color: white;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 .radarchart{
     background-color: #282D30;
