@@ -15,14 +15,17 @@ function LineStats(props){
   const id = props.id
   const [data, setData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
-  const call = new DataApi()
   useEffect(() => {
+    const call = new DataApi()
     call.get(id, '/average-sessions')
     .then(function (res){
       setData(res)
       setIsLoading(false)
-    },[isLoading, data])
-  })
+    })
+    .catch(function(err){
+      return console.log('An error accours',err)
+    })
+  },[isLoading, id])
   if(!isLoading){
     data.sessions.forEach((session, id) => session.day = days[id])
   }

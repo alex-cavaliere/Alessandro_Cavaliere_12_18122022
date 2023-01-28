@@ -13,14 +13,17 @@ function BarStats(props){
   const id = props.id
   const [data, setData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
-  const call = new DataApi()
   useEffect(() => {
+    const call = new DataApi()
     call.get(id, '/activity')
     .then(function (res){
       setData(res)
       setIsLoading(false)
-    },[isLoading, data])
-  })
+    })
+    .catch(function(err){
+      return console.log('An error accours',err)
+    })
+  },[isLoading, id])
   const currentDay = (date) => {
     return date.split('-')[2]
   }

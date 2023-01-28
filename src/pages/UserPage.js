@@ -21,14 +21,17 @@ function UserPage() {
   const {id} = useParams()
   const [data, setData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
-  const call = new DataApi()
   useEffect(() => {
+    const call = new DataApi()
     call.get(id, '')
     .then(function (res){
       setData(res)
       setIsLoading(false)
-    },[isLoading])
-  })
+    })
+    .catch(function(err){
+      return console.log('An error accours',err)
+    })
+  },[id, isLoading])
   return (
     <>{!isLoading && (
       <div className='main'>
