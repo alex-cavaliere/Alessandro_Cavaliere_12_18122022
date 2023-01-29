@@ -5,7 +5,7 @@ import DataApi from '../api/Api';
 
 /** 
  * @function LineStats React component for user average sessions
- * @param {number} props user Id
+ * @param {string} props user Id
  * @returns {JSX} informations for line chart
  */
 

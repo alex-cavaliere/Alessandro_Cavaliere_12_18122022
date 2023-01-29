@@ -5,7 +5,7 @@ import DataApi from '../api/Api';
 
 /** 
  * @function RadarStats React component for user performance
- * @param {number} props User Id
+ * @param {string} props User Id
  * @returns {JSX} informations for radar chart
  */
 
@@ -28,6 +28,7 @@ function RadarStats(props){
     const kind = Object.values(data.kind) 
     data.data.forEach((item, id) => item.kind = kind[id])
   }
+  console.log(data)
   return (
     <>{!isLoading && (
       <div className='radarchart'>

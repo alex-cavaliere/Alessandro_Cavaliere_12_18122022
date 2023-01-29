@@ -5,7 +5,7 @@ import DataApi from '../api/Api';
 
 /** 
  * @function PieStats React component for user today score
- * @param {number} props User Id
+ * @param {string} props User Id
  * @returns {JSX} informations for pie chart   
  */
 

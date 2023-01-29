@@ -5,7 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 
 /** 
  * @function BarStats React component for user activity
- * @param {number} props User Id
+ * @param {string} props User Id
  * @returns {JSX} informations about calories and weight for bar chart 
  */
 
