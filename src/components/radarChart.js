@@ -23,12 +23,11 @@ function RadarStats(props){
     .catch(function(err){
       return console.log('An error accours',err)
     })
-  },[id, isLoading])
+  },[])
   if(!isLoading){
     const kind = Object.values(data.kind) 
     data.data.forEach((item, id) => item.kind = kind[id])
   }
-  console.log(data)
   return (
     <>{!isLoading && (
       <div className='radarchart'>

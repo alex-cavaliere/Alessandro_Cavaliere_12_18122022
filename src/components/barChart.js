@@ -23,7 +23,7 @@ function BarStats(props){
     .catch(function(err){
       return console.log('An error accours',err)
     })
-  },[isLoading, id])
+  },[])
   const currentDay = (date) => {
     return date.split('-')[2]
   }
