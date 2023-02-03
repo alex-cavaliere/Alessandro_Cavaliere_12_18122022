@@ -2,6 +2,7 @@ import PropTypes from "prop-types"
 import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import DataApi from '../api/Api';
+//import {getUserAverageSession} from "../api/MockedData"
 
 /** 
  * @function LineStats React component for user average sessions
@@ -10,11 +11,15 @@ import DataApi from '../api/Api';
  */
 
 const days = ['L','M','M','J','V','S','D']
-
 function LineStats(props){
   const id = props.id
   const [data, setData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
+  /*useEffect(() => {
+    const MockedData = getUserAverageSession(Number(id))
+    setData(MockedData)
+    setIsLoading(false)
+  },[id])*/
   useEffect(() => {
     const call = new DataApi()
     call.get(id, '/average-sessions')

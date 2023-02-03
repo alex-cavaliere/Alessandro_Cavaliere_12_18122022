@@ -2,6 +2,7 @@ import PropTypes from "prop-types"
 import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Label } from 'recharts';
 import DataApi from '../api/Api';
+//import {getUserById} from "../api/MockedData"
 
 /** 
  * @function PieStats React component for user today score
@@ -9,12 +10,17 @@ import DataApi from '../api/Api';
  * @returns {JSX} informations for pie chart   
  */
 
-const COLORS = ["#E60000", "#FFFFFF"];
+const COLORS = ["#E60000", "#FFFFFF"]
 
 function PieStats(props) {
   const id = props.id
   const [data, setData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
+  /*useEffect(() => {
+    const MockedData = getUserById(Number(id))
+    setData(MockedData)
+    setIsLoading(false)
+  },[id])*/
   useEffect(() => {
     const call = new DataApi()
     call.get(id, '')
@@ -31,7 +37,8 @@ function PieStats(props) {
     { name: "range", value: 1 }
   ];
   return (
-    <div className='piechart'>
+    <>{!isLoading && (
+      <div className='piechart'>
       <p>Score</p>
       <ResponsiveContainer width="100%" aspect={1}>
         <PieChart width={800} height={400}>
@@ -55,6 +62,7 @@ function PieStats(props) {
         </PieChart>
       </ResponsiveContainer>
     </div>
+    )}</>
   );
 }
 

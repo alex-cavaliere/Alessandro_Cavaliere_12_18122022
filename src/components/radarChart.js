@@ -2,6 +2,7 @@ import PropTypes from "prop-types"
 import React, { useState, useEffect } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import DataApi from '../api/Api';
+//import {getUserPerformance} from "../api/MockedData"
 
 /** 
  * @function RadarStats React component for user performance
@@ -13,6 +14,11 @@ function RadarStats(props){
   const id = props.id
   const [data, setData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
+  /*useEffect(() => {
+    const MockedData = getUserPerformance(Number(id))
+    setData(MockedData)
+    setIsLoading(false)
+  },[id])*/
   useEffect(() => {
     const call = new DataApi()
     call.get(id, '/performance')

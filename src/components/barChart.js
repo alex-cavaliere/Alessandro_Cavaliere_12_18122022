@@ -2,6 +2,7 @@ import PropTypes from "prop-types"
 import React, { useState, useEffect } from 'react';
 import DataApi from '../api/Api';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+//import {getUserActivityById} from "../api/MockedData"
 
 /** 
  * @function BarStats React component for user activity
@@ -13,6 +14,11 @@ function BarStats(props){
   const id = props.id
   const [data, setData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
+  /*useEffect(() => {
+    const MockedData = getUserActivityById(Number(id))
+    setData(MockedData)
+    setIsLoading(false)
+  },[id])*/
   useEffect(() => {
     const call = new DataApi()
     call.get(id, '/activity')
